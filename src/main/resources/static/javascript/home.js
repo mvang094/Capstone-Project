@@ -15,7 +15,7 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseURL = 'http://127.0.0.1:8082/api/capstone';
+const baseURL = 'http://localhost:8082/api/capstone';
 
 function getHomePage(){
     firstPage.classList.remove('hide');

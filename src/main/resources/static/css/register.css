@@ -1,0 +1,45 @@
+body{
+    background: black;
+    position: relative;
+}
+.header-container{
+    background: rgb(138, 105, 105);
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+}
+.home-logo{
+    text-decoration: none;
+    color: white;
+    font-family: calibri, sans-serif;
+    font-size: 24pt;
+    margin-left: 5px;
+}
+.btn{
+    width: 150px;
+    border: 2px solid grey;
+    border-radius: 25px;
+    opacity: 60%;
+    font-family: calibri;
+    font-weight: bold;
+    background-color: transparent;
+    margin-top: 10px;
+}
+.btn:hover{
+    opacity: 100%;
+}
+.register-form, .login-form{
+    padding: 20px;
+    width: 50%;
+}
+.register-form button, .login-form button, header{
+    margin-left:10px;
+    margin-right: 10px;
+}
+header{
+    color: white;
+}
+.form-group{
+    padding: 10px;
+    color: white;
+}

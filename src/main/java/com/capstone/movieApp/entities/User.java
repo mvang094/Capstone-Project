@@ -16,15 +16,35 @@ public class User {
     private String username;
     @Column
     private String password;
-//    @ManyToMany(cascade = {CascadeType.ALL})
-//    @JoinTable( //The @joinTable is on the owning side
-//            name = "Watched_List", //intermediate table
-//            joinColumns = { @JoinColumn(name = "user_id")}, //foreign key
-//            inverseJoinColumns = {@JoinColumn(name = "movie_id")} //foreign key
-//    )
-//    Set<Movies> movies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @Column
+    private Boolean admin = false;
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinTable( //The @joinTable is on the owning side
+            name = "Watched_List", //intermediate table
+            joinColumns = { @JoinColumn(name = "user_id")}, //foreign key
+            inverseJoinColumns = {@JoinColumn(name = "movie_id")} //foreign key
+    )
+    Set<Movies> movies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinTable( //The @joinTable is on the owning side
+            name = "Interested_List", //intermediate table
+            joinColumns = { @JoinColumn(name = "user_id")}, //foreign key
+            inverseJoinColumns = {@JoinColumn(name = "movie_id")} //foreign key
+    )
+    Set<Movies> interestedMovies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //name is from the Watched_list class Movies movies field;
     @JsonManagedReference
     Set<Watched_List> watched;

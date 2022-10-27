@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/capstone")
+@RequestMapping("/api/v1/capstone")
 public class MovieController {
 
     @Autowired
     private MovieService movieService;
-
     @GetMapping("/homepage")
     public ArrayList<MovieDto> getHomePageMovies()
     {

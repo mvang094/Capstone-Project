@@ -1,7 +1,7 @@
 package com.capstone.movieApp.dtos;
 
 import com.capstone.movieApp.entities.User;
-import com.capstone.movieApp.entities.Watched_List;
+//import com.capstone.movieApp.entities.Watched_List;
 
 import java.io.Serializable;
 import java.util.*;
@@ -14,7 +14,8 @@ public class UserDto implements Serializable {
     private Long user_id;
     private String username;
     private String password;
-    private Set<Watched_ListDto> watchedDto = new HashSet<>();
+    private Boolean admin = false;
+    private Set<MovieDto> movieDto = new HashSet<>();
 
     public UserDto(User user){
         if (user.getId() != null){

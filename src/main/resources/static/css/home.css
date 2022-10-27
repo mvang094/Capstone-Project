@@ -1,0 +1,167 @@
+body{
+    background: black;
+    position: relative;
+}
+.header-container{
+    background: rgb(138, 105, 105);
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+}
+.home-logo{
+    text-decoration: none;
+    color: white;
+    font-family: calibri, sans-serif;
+    font-size: 24pt;
+    margin-left: 5px;
+}
+.navigation{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.navigation-links{
+    display: inline;
+    margin: 5px;
+}
+.navigation-links a{
+    text-decoration: none;
+    color: white;
+    font-family: calibri, sans-serif;
+    font-size: 16pt;
+}
+.navigation-links a:hover{
+    font-weight: bold;
+}
+.search-container{
+    display: inline-block;
+    margin: auto;
+}
+.sign-in{
+    float: right;
+}
+.sign-in a{
+    text-decoration: none;
+    color: white;
+    font-family: calibri, sans-serif;
+    font-size: 24pt;
+}
+#search-bar{
+    width:300px;
+    height:25px;
+    border-radius:25px;
+    border: none;
+    margin: 7px;
+}
+.carousel-box{
+    display:flex;
+    justify-content: center;
+}
+#myCarousel{
+    width: 50%;
+}
+.carousel-item img{
+    width: 100%;
+    height: 500px;
+}
+.bottom{
+    margin: auto;
+    width: 50%;
+}
+.bottom-row, .top-row{
+    display: flex;
+    justify-content: center;
+    border-bottom: solid grey 2px;
+}
+.top-row img, .bottom-row img{
+    height: 300px;
+    margin: 5px;
+}
+.card{
+    background-color: black;
+}
+.btn{
+    width: 150px;
+    border: 2px solid grey;
+    border-radius: 25px;
+    opacity: 60%;
+    font-family: calibri;
+    font-weight: bold;
+    background-color: transparent;
+}
+.btn:hover{
+    opacity: 100%;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 10px;
+    width: 100%;
+    bottom: 0;
+}
+
+.page-2{
+    width: 50%;
+    margin: auto;
+}
+
+.title-header{
+    width: 100%;
+    font-family: Calibri;
+    color: white;
+    font-size: 32pt;
+}
+.center-div{
+    display: flex;
+}
+.clicked-image, .clicked-details{
+    display: inline-block;
+    width: auto;
+    margin:2px;
+    color: lightgrey;
+}
+.selections{
+    margin-top: 20px;
+}
+.cast{
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+}
+
+/* ALL.HTML */
+.allMoviesBody {
+    margin: auto;
+    width: 67%;
+}
+.allMovies{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.allMovies img{
+    height: 250px;
+    width: 170px;
+    margin: 5px;
+}
+
+.movie-Details{
+    width: 100%;
+}
+.hide{
+    display: none;
+}
+
+
+/* movie.html */
+.movie.image.box{
+    display: inline-block;
+}
+
+.movie-detail-box{
+    display: inline block;
+    padding: 2px;
+    margin: 2 px;
+}
