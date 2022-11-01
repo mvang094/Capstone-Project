@@ -28,13 +28,13 @@ public class User {
         this.admin = admin;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinTable( //The @joinTable is on the owning side
-            name = "Watched_List", //intermediate table
-            joinColumns = { @JoinColumn(name = "user_id")}, //foreign key
-            inverseJoinColumns = {@JoinColumn(name = "movie_id")} //foreign key
-    )
-    Set<Movies> movies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+//    @JoinTable( //The @joinTable is on the owning side
+//            name = "Watched_List", //intermediate table
+//            joinColumns = { @JoinColumn(name = "user_id")}, //foreign key
+//            inverseJoinColumns = {@JoinColumn(name = "movie_id")} //foreign key
+//    )
+//    Set<Movies> movies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinTable( //The @joinTable is on the owning side
@@ -45,9 +45,9 @@ public class User {
     Set<Movies> interestedMovies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //name is from the Watched_list class Movies movies field;
+    //name is from the Watched_list class User user field;
     @JsonManagedReference
-    Set<Watched_List> watched;
+    Set<Watched_List> watched = new HashSet<>();
 
     public User() {} //default constructor
     public User(UserDto userDto){
@@ -73,5 +73,18 @@ public class User {
     }
     public String getPassword(){
         return password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(username, user.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
     }
 }

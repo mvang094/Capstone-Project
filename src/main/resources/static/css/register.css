@@ -28,11 +28,11 @@ body{
 .btn:hover{
     opacity: 100%;
 }
-.register-form, .login-form{
+.container-md{
     padding: 20px;
     width: 50%;
 }
-.register-form button, .login-form button, header{
+.container-md button, header{
     margin-left:10px;
     margin-right: 10px;
 }

@@ -1,3 +1,8 @@
+//Cookie
+const cookieArr = document.cookie.split("=")
+const userId = cookieArr[1];
+
+//DOM Elements
 const topRow = document.querySelector(".top-row");
 const bottomRow = document.querySelector(".bottom-row");
 const bottom = document.querySelector(".bottom");
@@ -17,11 +22,15 @@ const headers = {
 
 const baseURL = 'http://localhost:8082/api/capstone';
 
-function getHomePage(){
+async function getHomePage(){
     firstPage.classList.remove('hide');
     secondPage.classList.add('hide');
 
-    axios.get(`${baseURL}/homepage`)
+    await fetch(`${baseURL}/homepage`, {
+        method: "GET",
+        headers: headers
+    })
+    .then(response => response.json())
     .then(elem =>{
         let movieObj = elem.data;
         console.log(movieObj[1]);
@@ -47,6 +56,7 @@ function getHomePage(){
             bottomRow.innerHTML += movieCard2;
         }
     })
+    .catch(err => console.error(err))
 }
 
 function show(bodyObj){
@@ -62,6 +72,13 @@ function show(bodyObj){
 }
 
 function showDetails(){}
+
+function handleLogout(){
+    let c = document.cookie.split(";");
+    for(let i in c){
+        document.cookie = /^[^=]+/.exec(c[i])[0]+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    }
+}
 getHomePage();
 
 

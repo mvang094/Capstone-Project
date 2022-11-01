@@ -16,7 +16,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -34,8 +33,6 @@ public class UserServiceImpl implements UserService {
     public List<String> userLogin(UserDto userDto)
     {
         List<String> response = new ArrayList<>();
-        //Optionals are there as a way to avoid "NullPointerExceptions" which will break your code
-        //and crash application.
         Optional<User> userOptional = userRepo.findByUsername(userDto.getUsername());
         if(userOptional.isPresent())
         {

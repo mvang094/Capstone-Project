@@ -2,22 +2,27 @@ package com.capstone.movieApp.entities;
 
 import com.capstone.movieApp.dtos.Watched_ListDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "watched_list")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Watched_List {
 
     @EmbeddedId //the primary key for the intermediate table
     private Watched_ListKey watch_id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("movieId")
     @JoinColumn(name = "movie_id")
     @JsonBackReference
@@ -41,6 +46,12 @@ public class Watched_List {
             this.review = watchDto.getReview();
     }
 
+    public Watched_List(User user, Movies movies){
+        this.user = user;
+        this.movies = movies;
+        this.watch_id = new Watched_ListKey(user.getId(), movies.getMovie_id());
+    }
+
     public Watched_ListKey getWatch_id() {
         return watch_id;
     }
@@ -49,6 +60,7 @@ public class Watched_List {
         this.watch_id = watch_id;
     }
 
+    @Transient
     public User getUser() {
         return user;
     }
@@ -87,5 +99,21 @@ public class Watched_List {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Watched_List that = (Watched_List) o;
+        return Objects.equals(user, that.user) &&
+                Objects.equals(movies, that.movies);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(user, user);
     }
 }

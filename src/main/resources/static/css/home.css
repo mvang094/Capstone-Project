@@ -2,7 +2,7 @@ body{
     background: black;
     position: relative;
 }
-.header-container{
+.navbar{
     background: rgb(138, 105, 105);
     display: flex;
     padding: 2px;
