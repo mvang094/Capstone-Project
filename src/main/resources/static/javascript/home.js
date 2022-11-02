@@ -20,7 +20,7 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseURL = 'http://localhost:8082/api/capstone';
+const baseURL = "http://localhost:8085/api/v1/capstone";
 
 async function getHomePage(){
     firstPage.classList.remove('hide');
@@ -31,15 +31,15 @@ async function getHomePage(){
         headers: headers
     })
     .then(response => response.json())
-    .then(elem =>{
-        let movieObj = elem.data;
-        console.log(movieObj[1]);
+    .then(data =>{
+        let movieObj = data;
+        console.log(movieObj);
         for(let i = 0; i < 4; i ++){
             let movieCard1 = `
                 <div class = "card">
-                    <img class = "card-top" src = "${movieObj[i].movie_image}">
+                    <img class = "card-top" src = "${movieObj[i].image}">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${movieObj[i]})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${movieObj[i].movie_id})">DETAILS</button>
                     </div>
                 </div>`
 
@@ -48,9 +48,9 @@ async function getHomePage(){
         for(let i = 4; i < 8; i ++){
             let movieCard2 = `
                 <div class = "card">
-                    <img class = "card-top" src = "${movieObj[i].movie_image}">
+                    <img class = "card-top" src = "${movieObj[i].image}">
                     <div class = "card-body text-center">
-                        <button type = "button" class = "btn btn-primary" onclick = "show(${movieObj[i]})">DETAILS</button>
+                        <button type = "button" class = "btn btn-primary" onclick = "show(${movieObj[i].movie_id})">DETAILS</button>
                     </div>
                 </div>`
             bottomRow.innerHTML += movieCard2;
@@ -59,16 +59,34 @@ async function getHomePage(){
     .catch(err => console.error(err))
 }
 
-function show(bodyObj){
-    firstPage.classList.add('hide');
-    secondPage.classList.remove('hide');
+async function show(id){
 
-    clickedImage.innerHTML = '';
-    clickedDetails.innerHTML = '';
-    titleHeader.innerHTML = '';
-    clickedImage.innerHTML = `<img src = "${bodyObj.movie_image}" alt = "movie_${bodyObj.movie_id}">`;
-    clickedDetails.innerHTML = `${bodyObj.movie_summary}`;
-    titleHeader.innerHTML = `${bodyObj.movie_title}`;
+    await fetch(`${baseURL}/${id}`, {
+        method: "GET",
+        headers: headers
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        firstPage.classList.add('hide');
+        secondPage.classList.remove('hide');
+
+        clickedImage.innerHTML = '';
+        clickedDetails.innerHTML = '';
+        titleHeader.innerHTML = '';
+        clickedImage.innerHTML = `<img src = "${data.image}" alt = "movie_${data.movie_id}" height = "300">`;
+        clickedDetails.innerHTML = `${data.summary}
+                                    <br>
+                                    <div class = "container buttons">
+                                        <button type = "button" class = "btn btn-primary" onclick = "addToWatchList(${data.movie_id})">+ Watched</button>
+                                        <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.movie_id})">Trailer</button>
+                                        <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data.movie_id})">+ Interested</button>
+                                        <a href = "home.html">Return to Home</a>
+                                    </div>
+                                    `;
+        titleHeader.innerHTML = `${data.title}`;
+    })
+    .catch(err => console.error(err.message))
 }
 
 function showDetails(){}

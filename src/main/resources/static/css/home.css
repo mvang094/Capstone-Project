@@ -16,13 +16,15 @@ body{
     margin-left: 5px;
 }
 .navigation{
-    margin-top: 15px;
+    padding-top: 13px;
+    width: 50%;
+    margin: auto;
     display: flex;
     justify-content: center;
 }
 .navigation-links{
     display: inline;
-    margin: 5px;
+    margin: 10px;
 }
 .navigation-links a{
     text-decoration: none;
@@ -115,13 +117,36 @@ footer{
 }
 .center-div{
     display: flex;
+    opacity: 75%;
 }
 .clicked-image, .clicked-details{
     display: inline-block;
     width: auto;
-    margin:2px;
+    margin: 2px;
     color: lightgrey;
 }
+
+.buttons{
+    margin: 10px;
+}
+
+.buttons button {
+    font-size: 9pt;
+    width: 100px;
+}
+
+.buttons a{
+    position: absolute;
+    bottom: 0px
+    margin: auto;
+    text-decoration: none;
+    color: blue;
+}
+
+.buttons a:hover{
+    font-weight: bold;
+}
+
 .selections{
     margin-top: 20px;
 }

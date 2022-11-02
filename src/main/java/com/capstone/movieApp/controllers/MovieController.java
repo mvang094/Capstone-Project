@@ -14,9 +14,17 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
     @GetMapping("/homepage")
-    public HashSet<MovieDto> getHomePageMovies()
+    public MovieDto[] getHomePageMovies()
     {
-        return movieService.getHomeAll();
+        HashSet<MovieDto> returnMovies = movieService.getHomeAll();
+        MovieDto[] showMovies = returnMovies.toArray(new MovieDto[returnMovies.size()]);
+        return showMovies;
+    }
+
+    @GetMapping("/{movieId}")
+    public Optional<MovieDto> getMoviesById(@PathVariable Long movieId)
+    {
+        return movieService.getMoviesById(movieId);
     }
 
 
