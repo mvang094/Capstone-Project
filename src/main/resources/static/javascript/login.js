@@ -21,7 +21,6 @@ const handleSubmit = async (e) =>{
         method: "POST",
         body: JSON.stringify(bodyObj),
         headers: headers
-    })
         .catch(err => console.error(err.message))
 
     const responseArr = await response.json()

@@ -31,5 +31,6 @@ public interface MovieService {
     @Transactional
     void deleteMovie(Movies movies);
 
-//            Long one, Long two, Long three, Long four, Long five, Long six, Long seven, Long eight); //(use recursion?)
+    List<Movies> findGenre(String genre);
+
 }

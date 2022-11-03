@@ -10,31 +10,27 @@
 </head>
 <body>
 <div class = "home-container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="home.html">Groovies</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class = "container-fluid header-container">
+        <div class = "home-logo">
+            <a href = "index.html">GROOVIES
+                <img src ="">
+            </a>
+        </div>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <ul class = "drop-down">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Watched List</a>
-                            <a class="dropdown-item" href="#">Interested List</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </li>
-                </ul>
+        <div class = "search-container">
+            <input type = "text" id = "search-bar" placeholder=" Search">
+            <input type = "submit" id = "search-submit"/>
+        </div>
+        <div class="dropdown sign-in">
+            <button class="dropbtn">Sign In</button>
+            <div class="dropdown-content">
+                <a href="#">Watched List</a>
+                <a href="#">Interested List</a>
+                <hr>
+                <a href="#">Logout</a>
             </div>
-        </nav>
+        </div>
+    </div>
         <div class = "navigation">
             <ul class = "navigation-menu">
                 <li class = "navigation-links"><a href = "action.html">Action</a></li>
@@ -89,6 +85,10 @@
                 <div class = "container clicked-details"></div>
             </div>
             <div class = "container cast">CAST</div>
+        </div>
+
+        <div class = "video hide">
+
         </div>
 </div>
 

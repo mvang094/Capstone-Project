@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -86,6 +87,12 @@ public class MovieServiceImpl implements MovieService{ ;
     public void deleteMovie(Movies movies) {
         Optional<Watched_List> watchOptional = watchedRepo.findBymovies(movies);
         watchOptional.ifPresent(movie -> watchedRepo.delete(movie));
+    }
+
+    @Override
+    public List<Movies> findGenre(String genre){
+        List<Movies> genreList = movieRepo.findAllBygenre(genre);
+        return genreList;
     }
 
 

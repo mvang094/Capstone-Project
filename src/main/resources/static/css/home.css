@@ -2,18 +2,22 @@ body{
     background: black;
     position: relative;
 }
-.navbar{
+.header-container{
     background: rgb(138, 105, 105);
     display: flex;
     padding: 2px;
     justify-content: center;
 }
-.home-logo{
+.home-logo a{
     text-decoration: none;
     color: white;
     font-family: calibri, sans-serif;
     font-size: 24pt;
-    margin-left: 5px;
+}
+.home-logo{
+    width: 30%;
+    display: inline-block;
+    margin-left: 10px;
 }
 .navigation{
     padding-top: 13px;
@@ -36,18 +40,58 @@ body{
     font-weight: bold;
 }
 .search-container{
-    display: inline-block;
+    width: 35%;
+    display: flex;
+    justify-content: center;
     margin: auto;
 }
-.sign-in{
-    float: right;
-}
-.sign-in a{
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 25%;
+  }
+
+  .dropdown:hover{
+    display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
-    color: white;
-    font-family: calibri, sans-serif;
-    font-size: 24pt;
-}
+    display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+
+  .dropbtn{
+    margin-left: 125px;
+  }
+
 #search-bar{
     width:300px;
     height:25px;
@@ -137,15 +181,25 @@ footer{
 
 .buttons a{
     position: absolute;
-    bottom: 0px
-    margin: auto;
     text-decoration: none;
     color: blue;
+    padding: 20px;
 }
 
 .buttons a:hover{
     font-weight: bold;
 }
+
+.video{
+    width: 75%;
+    margin: auto;
+}
+
+.video iframe{
+    width: 100%;
+    margin: auto;
+}
+
 
 .selections{
     margin-top: 20px;

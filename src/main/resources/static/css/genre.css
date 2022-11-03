@@ -1,0 +1,160 @@
+body{
+background: black;
+position: relative;
+}
+
+.navbar{
+background: rgb(138, 105, 105);
+display: flex;
+padding: 2px;
+justify-content: center;
+}
+
+.home-logo{
+text-decoration: none;
+color: white;
+font-family: calibri, sans-serif;
+font-size: 24pt;
+margin-left: 5px;
+}
+
+.navigation{
+padding-top: 13px;
+width: 50%;
+margin: auto;
+display: flex;
+justify-content: center;
+}
+
+.navigation-links{
+display: inline;
+margin: 10px;
+}
+
+.navigation-links a{
+text-decoration: none;
+color: white;
+font-family: calibri, sans-serif;
+font-size: 16pt;
+}
+
+.navigation-links a:hover{
+font-weight: bold;
+}
+
+.search-container{
+display: inline-block;
+margin: auto;
+}
+
+.sign-in{
+float: right;
+}
+
+.sign-in a{
+text-decoration: none;
+color: white;
+font-family: calibri, sans-serif;
+font-size: 24pt;
+}
+
+#search-bar{
+width:300px;
+height:25px;
+border-radius:25px;
+border: none;
+margin: 7px;
+}
+
+.card{
+background-color: black;
+}
+
+.btn{
+width: 150px;
+border: 2px solid grey;
+border-radius: 25px;
+opacity: 60%;
+font-family: calibri;
+font-weight: bold;
+background-color: transparent;
+}
+
+.btn:hover{
+opacity: 100%;
+}
+
+footer{
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+margin-top: 10px;
+width: 100%;
+bottom: 0;
+}
+
+.genreCSS{
+display: flex;
+justify-content: center;
+margin: 10px;
+}
+
+.page-2{
+width: 50%;
+margin: auto;
+}
+
+.title-header{
+width: 100%;
+font-family: Calibri;
+color: white;
+font-size: 32pt;
+}
+.center-div{
+display: flex;
+opacity: 75%;
+}
+.clicked-image, .clicked-details{
+display: inline-block;
+width: auto;
+margin: 2px;
+color: lightgrey;
+}
+
+.buttons{
+margin: 10px;
+}
+
+.buttons button {
+font-size: 9pt;
+width: 100px;
+}
+
+.buttons a{
+position: absolute;
+bottom: 0px
+margin: auto;
+text-decoration: none;
+color: blue;
+font-size: 24pt;
+padding: 10px;
+}
+
+.buttons a:hover{
+font-weight: bold;
+}
+
+.selections{
+margin-top: 20px;
+}
+
+.cast{
+width: 100%;
+background-color: white;
+margin-top: 10px;
+}
+
+.hide{
+display: none;
+}

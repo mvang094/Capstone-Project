@@ -33,5 +33,8 @@ public interface MovieRepo extends JpaRepository<Movies, Long> {
     //Finds the list of movies with the cast member in it
     List<Movies> findAllBycastlist(Casting_List cast);
 
+    //Finds the list of movies by genre
+    List<Movies> findAllBygenre(String genre);
+
     //Arraylist allows for duplicats so use Set or Hashset
 }

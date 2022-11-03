@@ -2,18 +2,13 @@
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
 
-//DOM Elements
-const topRow = document.querySelector(".top-row");
-const bottomRow = document.querySelector(".bottom-row");
-const bottom = document.querySelector(".bottom");
-const detailBtn = document.querySelector("#details");
-
 const firstPage = document.querySelector(".page-1");
+const adventureOne = document.querySelector(".adventure-one");
+const adventureTwo = document.querySelector(".adventure-two");
 const secondPage = document.querySelector(".page-2");
 const titleHeader = document.querySelector(".title-header");
 const clickedImage = document.querySelector(".clicked-image");
 const clickedDetails = document.querySelector(".clicked-details");
-const video = document.querySelector(".video");
 
 let movieDetails;
 
@@ -23,43 +18,39 @@ const headers = {
 
 const baseURL = "http://localhost:8085/api/v1/capstone";
 
-async function getHomePage(){
+async function getMystery(){
     firstPage.classList.remove('hide');
     secondPage.classList.add('hide');
 
-    await fetch(`${baseURL}/homepage`, {
+    await fetch(`${baseURL}/mystery`, {
         method: "GET",
         headers: headers
     })
     .then(response => response.json())
-    .then(data =>{
-        let movieObj = data;
-        console.log(movieObj);
-        for(let i = 0; i < 4; i ++){
+    .then(data => {
+        console.log(data);
+        for(let i = 0; i < 5; i++){
             let movieCard1 = `
                 <div class = "card">
-                    <img class = "card-top" src = "${movieObj[i].image}">
+                    <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${movieObj[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
                     </div>
                 </div>`
-
-            topRow.innerHTML += movieCard1;
+            adventureOne.innerHTML += movieCard1;
         }
-        for(let i = 4; i < 8; i ++){
-            let movieCard2 = `
+        for(let i = 5; i < data.length; i++){
+            let movieCard1 = `
                 <div class = "card">
-                    <img class = "card-top" src = "${movieObj[i].image}">
+                    <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button type = "button" class = "btn btn-primary" onclick = "show(${movieObj[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
                     </div>
                 </div>`
-            bottomRow.innerHTML += movieCard2;
+            adventureTwo.innerHTML += movieCard1;
         }
     })
-    .catch(err => console.error(err))
 }
-
 async function show(id){
 
     await fetch(`${baseURL}/${id}`, {
@@ -69,7 +60,6 @@ async function show(id){
     .then(res => res.json())
     .then(data => {
         console.log(data);
-        console.log(data.trailer)
         firstPage.classList.add('hide');
         secondPage.classList.remove('hide');
 
@@ -81,22 +71,15 @@ async function show(id){
                                     <br>
                                     <div class = "container buttons">
                                         <button type = "button" class = "btn btn-primary" onclick = "addToWatchList(${data.movie_id})">+ Watched</button>
-                                        <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.trailer})">Trailer</button>
+                                        <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.movie_id})">Trailer</button>
                                         <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data.movie_id})">+ Interested</button>
-\                                       <a href = "home.html">Return to Home</a>
+                                        <br>
+                                        <a href = "mystery.html">Return</a>
                                     </div>
                                     `;
         titleHeader.innerHTML = `${data.title}`;
-
     })
     .catch(err => console.error(err.message))
-}
-
-function playTrailer(trailer){
-    video.classList.remove('hide');
-    video.innerHTML = `
-                      <iframe src = "${trailer}"></iframe>
-    `
 }
 
 function handleLogout(){
@@ -105,6 +88,8 @@ function handleLogout(){
         document.cookie = /^[^=]+/.exec(c[i])[0]+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
     }
 }
-getHomePage();
+
+getMystery();
+
 
 
