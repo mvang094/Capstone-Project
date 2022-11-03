@@ -69,6 +69,7 @@ public class Watched_List {
         this.user = user;
     }
 
+    @Transient
     public Movies getMovies() {
         return movies;
     }

@@ -80,10 +80,11 @@ async function show(id){
         clickedDetails.innerHTML = `${data.summary}
                                     <br>
                                     <div class = "container buttons">
-                                        <button type = "button" class = "btn btn-primary" onclick = "addToWatchList(${data.movie_id})">+ Watched</button>
+                                        <button type = "button" class = "btn btn-primary" onclick = "addToWatchedList(${data.movie_id})">+ Watched</button>
                                         <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.trailer})">Trailer</button>
-                                        <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data.movie_id})">+ Interested</button>
-\                                       <a href = "home.html">Return to Home</a>
+                                        <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data})">+ Interested</button>
+                                        <br>
+                                        <a href = "home.html">Return to Home</a>
                                     </div>
                                     `;
         titleHeader.innerHTML = `${data.title}`;
@@ -97,6 +98,29 @@ function playTrailer(trailer){
     video.innerHTML = `
                       <iframe src = "${trailer}"></iframe>
     `
+}
+
+async function addToInterestedList(obj){
+    const response = await fetch(`${baseUrl}/interested/${userId}`, {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: headers
+    })
+        .catch(err => console.error(err.message))
+    if (response.status == 200) {
+        return "Successfully Added to interested-List"
+    }
+}
+
+async function addToWatchedList(id){
+    const response = await fetch(`${baseURL}/watched/${userId}/${id}`, {
+            method: "POST",
+            headers: headers
+        })
+            .catch(err => console.error(err.message))
+        if (response.status == 200) {
+            return "Successfully Added to watched List"
+        }
 }
 
 function handleLogout(){

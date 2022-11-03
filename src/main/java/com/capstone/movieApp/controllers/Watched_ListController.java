@@ -1,18 +1,25 @@
-package com.capstone.movieApp.controllers;
-
-import com.capstone.movieApp.entities.Movies;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
-
-@Controller
-@RequestMapping("/watched_list")
-public class Watched_ListController {
-
-//    @RequestMapping("/{userId}")
-//    public List<Movies> getMovies(@PathVariable String userId){
+//package com.capstone.movieApp.controllers;
 //
+//import com.capstone.movieApp.dtos.MovieDto;
+//import com.capstone.movieApp.entities.Movies;
+//import com.capstone.movieApp.services.MovieService;
+//import com.capstone.movieApp.services.Watched_Service;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//
+//@RestController
+//@RequestMapping("api/v1/capstone/watched")
+//public class Watched_ListController {
+//    @Autowired
+//    private MovieService movieService;
+//
+//    @Autowired
+//    private Watched_Service watchedService;
+//    @PostMapping("/{userId}")
+//    public void addWatched (@RequestBody MovieDto movieDto, @PathVariable Long userId){
+//        watchedService.addMovieToWatchedList(movieDto, userId);
 //    }
-}
+//}
