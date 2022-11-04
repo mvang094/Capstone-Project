@@ -61,4 +61,9 @@ public class MovieController {
     public void addWatched (@PathVariable Long movieId, @PathVariable Long userId){
         watchedService.addMovieToWatchedList(movieId, userId);
     }
+
+    @PostMapping("/interested/{userId}/{movieId}")
+    public void addInterested (@PathVariable Long movieId, @PathVariable Long userId){
+//        watchedService.addMovieToWatchedList(movieId, userId);
+    }
 }

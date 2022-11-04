@@ -11,17 +11,17 @@ import java.util.Optional;
 public interface Watched_Service {
     void addMovieToWatchedList(Long movieId, Long userId);
 
-//    @Transactional
-//    void deleteFromWatchedList(Long userId, Long movieId);
-//
+    @Transactional
+    void deleteFromWatchedList(Long movieId);
+
 //    @Transactional
 //    //To add review
-//    void updateWatchList(MovieDto movieDto, Long userId);
-//
-//    //Return the user's watched list
-//    List<Watched_ListDto> getWatchedList(Long userId);
-//
-//    //If you want to look at the details again
+//    void updateWatchList(Long movieId);
+
+    //Return the user's watched list
+    List<Watched_ListDto> getWatchedList(Long userId);
+
+    //If you want to look at the details again
 //    Optional<Watched_ListDto> getWatchEntry(Long noteId);
 
 }

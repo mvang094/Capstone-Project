@@ -75,6 +75,10 @@ public class User {
         return password;
     }
 
+    public void addInterestedMovies(Movies movies){
+        this.interestedMovies.add(movies);
+        movies.getInterestedUsers().add(this);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

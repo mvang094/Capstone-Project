@@ -50,6 +50,7 @@ public class Watched_List {
         this.user = user;
         this.movies = movies;
         this.watch_id = new Watched_ListKey(user.getId(), movies.getMovie_id());
+        this.watched = true;
     }
 
     public Watched_ListKey getWatch_id() {

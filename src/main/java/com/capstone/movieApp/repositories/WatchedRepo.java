@@ -14,10 +14,10 @@ import java.util.Optional;
 public interface WatchedRepo extends JpaRepository<Watched_List, Watched_ListKey> {
 
     //This is fulfilled by the List<Movies> findAllByUserEquals(User user) in MovieRepo?
-    Optional<Watched_List> findAllByUser(User user);
+    List<Watched_List> findAllByUserEquals(User user);
 
 //    @Override
-//    Optional<Watched_List> findById(Long movieId);
+    Optional<Watched_List> findById(Long id);
 
     //This method will be used for rating the movie
 //    List<Watched_List> findByIdmovies(Movies movies);

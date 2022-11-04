@@ -82,7 +82,7 @@ async function show(id){
                                     <div class = "container buttons">
                                         <button type = "button" class = "btn btn-primary" onclick = "addToWatchedList(${data.movie_id})">+ Watched</button>
                                         <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.trailer})">Trailer</button>
-                                        <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data})">+ Interested</button>
+                                        <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data.movie_id})">+ Interested</button>
                                         <br>
                                         <a href = "home.html">Return to Home</a>
                                     </div>
@@ -100,10 +100,9 @@ function playTrailer(trailer){
     `
 }
 
-async function addToInterestedList(obj){
-    const response = await fetch(`${baseUrl}/interested/${userId}`, {
+async function addToInterestedList(id){
+    const response = await fetch(`${baseUrl}/interested/${userId}/${id}`, {
         method: "POST",
-        body: JSON.stringify(obj),
         headers: headers
     })
         .catch(err => console.error(err.message))
@@ -113,6 +112,7 @@ async function addToInterestedList(obj){
 }
 
 async function addToWatchedList(id){
+    //toggle "Added" in cass
     const response = await fetch(`${baseURL}/watched/${userId}/${id}`, {
             method: "POST",
             headers: headers
