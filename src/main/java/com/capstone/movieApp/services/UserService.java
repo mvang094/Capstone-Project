@@ -13,4 +13,6 @@ public interface UserService {
 
     //post method to send the body securely to the backend and retrieve the user if exists
     List<String> userLogin(UserDto userDto);
+
+    UserDto getUser(Long userId);
 }

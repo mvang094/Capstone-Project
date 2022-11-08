@@ -25,12 +25,11 @@ public interface MovieService {
 
     //Adds movies to the watchlist by finding the user's watchlist, then setting the movieDto
     //body to the user's watchlist account. The watchlist should be unique to each user?
-    void addMovieToWatchedList(Movies movies, User user); //Need ids from to add to Watched_ListKey listKey);
+    void addMovieToWatchedList(Long movieId, Long userid); //Need ids from to add to Watched_ListKey listKey);
 
-    //To remove movie from watched list
-    @Transactional
-    void deleteMovie(Movies movies);
 
     List<Movies> findGenre(String genre);
+
+    void addToInterestedList(Long userId, Long movieId);
 
 }

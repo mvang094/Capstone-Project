@@ -16,8 +16,8 @@ public interface WatchedRepo extends JpaRepository<Watched_List, Watched_ListKey
     //This is fulfilled by the List<Movies> findAllByUserEquals(User user) in MovieRepo?
     List<Watched_List> findAllByUserEquals(User user);
 
-//    @Override
-    Optional<Watched_List> findById(Long id);
+    @Override
+    Optional<Watched_List> findById(Watched_ListKey watch_id);
 
     //This method will be used for rating the movie
 //    List<Watched_List> findByIdmovies(Movies movies);

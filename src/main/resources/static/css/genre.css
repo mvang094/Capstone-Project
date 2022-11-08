@@ -3,21 +3,6 @@ background: black;
 position: relative;
 }
 
-.navbar{
-background: rgb(138, 105, 105);
-display: flex;
-padding: 2px;
-justify-content: center;
-}
-
-.home-logo{
-text-decoration: none;
-color: white;
-font-family: calibri, sans-serif;
-font-size: 24pt;
-margin-left: 5px;
-}
-
 .navigation{
 padding-top: 13px;
 width: 50%;
@@ -42,28 +27,23 @@ font-size: 16pt;
 font-weight: bold;
 }
 
-.search-container{
-display: inline-block;
-margin: auto;
+.navbar{
+    background-color: rgb(138, 105, 105);
 }
 
-.sign-in{
-float: right;
+.searchBtn{
+    background-color: lightgray;
+    opacity: 100%;
+}
+.searchBtn img{
+    width: 30px;
 }
 
-.sign-in a{
-text-decoration: none;
-color: white;
-font-family: calibri, sans-serif;
-font-size: 24pt;
+.dropdownbox, .search-bar{
+    margin-left:30%;
 }
-
-#search-bar{
-width:300px;
-height:25px;
-border-radius:25px;
-border: none;
-margin: 7px;
+.search-bar{
+    width:30%;
 }
 
 .card{
@@ -132,13 +112,10 @@ width: 100px;
 }
 
 .buttons a{
-position: absolute;
-bottom: 0px
-margin: auto;
-text-decoration: none;
-color: blue;
-font-size: 24pt;
-padding: 10px;
+    position: absolute;
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 20px;
 }
 
 .buttons a:hover{

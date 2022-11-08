@@ -24,8 +24,7 @@ public interface MovieRepo extends JpaRepository<Movies, Long> {
 
 //    Returns all the instances of the Movies i.e. for the 'All' html page
 
-    @Override
-    List<Movies> findAll();
+//    List<Movies> findAll();
 
 //    //Finds the list of movies by user
 //    List<Movies> findAllByusersEquals(User user);

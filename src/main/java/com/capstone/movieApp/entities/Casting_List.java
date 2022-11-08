@@ -18,7 +18,7 @@ public class Casting_List {
     private Long cast_id;
 
     @Column
-    private String castName, castImage;
+    private String castFirst, castName, castImage;
 
     @ManyToMany
     @JoinTable(

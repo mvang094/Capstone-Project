@@ -4,10 +4,7 @@ import com.capstone.movieApp.dtos.UserDto;
 import com.capstone.movieApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,11 @@ public class UserController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @GetMapping("/{userId}")
+    public UserDto getUser(@PathVariable Long userId){
+        return userService.getUser(userId);
+    }
 
     @PostMapping("/register")
     public List<String> addUser(@RequestBody UserDto userDto){

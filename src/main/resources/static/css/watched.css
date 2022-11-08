@@ -1,0 +1,65 @@
+body{
+    background-color: black;
+}
+
+.header-container{
+    background: rgb(138, 105, 105);
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+}
+.navbar-brand{
+    color: white;
+    font-family: Calibri;
+    font-size: 24pt;
+    margin: auto;
+}
+
+.navbar-collapse{
+    margin-right: 5%;
+}
+
+.watchedBox{
+    width: 50%;
+    margin: auto;
+    font-family: Calibri;
+}
+
+.movieCard{
+    margin: auto;
+}
+
+.card{
+    background: none;
+    color: white;
+}
+
+.card img{
+    width: 200px;
+    height: 300px;
+    margin: auto;
+}
+
+.btn{
+    background: grey;
+    opacity: 50%;
+}
+
+.btn:hover{
+    opacity: 100%;
+}
+
+.image{
+    display: block;
+    margin: auto;
+}
+
+.image img{
+    width: 200px;
+    height: 300px;
+}
+
+.modal-content{
+    color: white;
+}
+

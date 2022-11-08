@@ -65,28 +65,33 @@ public class MovieServiceImpl implements MovieService{ ;
     }
 
     @Override
-    public void addMovieToWatchedList(Movies movies, User user){
-        Optional<User> userOptional = userRepo.findById(user.getId());
-//        Movies newMovie = new Movies(movieDto); //Creates a new instance of the Movies class with the moviesDto as argument
-        if(userOptional.isPresent()) {
+    public void addMovieToWatchedList(Long movieId, Long userId){
+        Optional<User> userOptional = userRepo.findById(userId);
+        Optional<Movies> movieOptional = movieRepo.findById(movieId);
+        if(userOptional.isPresent()&& movieOptional.isPresent()) {
+            User user = userOptional.get();
+            Movies movies = movieOptional.get();
             Watched_List newList = new Watched_List(user, movies);
             watchedRepo.saveAndFlush(newList);
         }
-//        userOptional.ifPresent(watched -> movies.setWatched(watched));
-        /*
-            :: - method reference operator - behaves just like Lamda expressions
-            <Class name>::<method name>
-            In this example, it used the instance method which is
-            (objectOfClass::methodName)
-            Same as:
-            userOptional.ifPresent( note -> Note.setUser(note))
-         */
     }
 
+
     @Override
-    public void deleteMovie(Movies movies) {
-        Optional<Watched_List> watchOptional = watchedRepo.findBymovies(movies);
-        watchOptional.ifPresent(movie -> watchedRepo.delete(movie));
+    public void addToInterestedList(Long userId, Long movieId){
+        Optional<User> userOptional = userRepo.findById(userId);
+        Optional<Movies> moviesOptional = movieRepo.findById(movieId);
+        Watched_ListKey key = new Watched_ListKey(userId, movieId);
+        Optional<Watched_List> list = watchedRepo.findById(key);
+
+        if (!list.isPresent() && userOptional.isPresent() && moviesOptional.isPresent()){
+            User user = userOptional.get();
+            Movies movies = moviesOptional.get();
+
+            movies.addInterestedUsers(user);
+            user.addInterestedMovies(movies);
+            userRepo.saveAndFlush(user);
+        }
     }
 
     @Override

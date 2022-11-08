@@ -1,6 +1,7 @@
 let loginForm = document.getElementById('login-form')
 let loginUsername = document.getElementById('login-username')
 let loginPassword = document.getElementById('login-password')
+let showPassword = document.querySelector("#showPassword");
 
 const headers = {
     'Content-Type':'application/json'
@@ -15,7 +16,6 @@ const handleSubmit = async (e) =>{
         username: loginUsername.value,
         password: loginPassword.value
     }
-    console.log(bodyObj);
 
     const response = await fetch(`${baseUrl}/login`, {
         method: "POST",
@@ -32,5 +32,17 @@ const handleSubmit = async (e) =>{
     }
 }
 
-loginForm.addEventListener("submit", handleSubmit)
+function showPasswordField(){
+
+    if(showPassword.checked === true){
+        loginPassword.type = "text";
+    }
+    else
+    {
+        loginPassword.type = "password";
+    }
+}
+
+loginForm.addEventListener("submit", handleSubmit);
+showPassword.addEventListener("click", showPasswordField)
 

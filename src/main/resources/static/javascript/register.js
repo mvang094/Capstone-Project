@@ -15,7 +15,6 @@ const handleSubmit = async (e) =>{
         username: registerUsername.value,
         password: registerPassword.value
     }
-    console.log(bodyObj);
 
     const response = await fetch(`${baseUrl}/register`, {
         method: "POST",

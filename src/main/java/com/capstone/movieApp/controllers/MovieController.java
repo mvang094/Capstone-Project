@@ -1,7 +1,9 @@
 package com.capstone.movieApp.controllers;
 
 import com.capstone.movieApp.dtos.MovieDto;
+import com.capstone.movieApp.dtos.Watched_ListDto;
 import com.capstone.movieApp.entities.Movies;
+import com.capstone.movieApp.entities.Watched_List;
 import com.capstone.movieApp.services.MovieService;
 import com.capstone.movieApp.services.Watched_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,14 +58,13 @@ public class MovieController {
     public List<Movies> getRomanceMovies(){
         return movieService.findGenre("Romance");
     }
-
-    @PostMapping("/watched/{userId}/{movieId}")
-    public void addWatched (@PathVariable Long movieId, @PathVariable Long userId){
-        watchedService.addMovieToWatchedList(movieId, userId);
-    }
-
-    @PostMapping("/interested/{userId}/{movieId}")
-    public void addInterested (@PathVariable Long movieId, @PathVariable Long userId){
+//    @PostMapping("/watched/{userId}/{movieId}")
+//    public void addWatched (@PathVariable Long movieId, @PathVariable Long userId){
 //        watchedService.addMovieToWatchedList(movieId, userId);
-    }
+//    }
+
+//    @PostMapping("/interested/{userId}/{movieId}")
+//    public void addInterested (@PathVariable Long movieId, @PathVariable Long userId){
+//        userService.addMovieToInterestedList(movieId, userId);
+//    }
 }

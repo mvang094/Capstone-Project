@@ -1,24 +1,27 @@
 body{
     background: black;
-    position: relative;
+    /* position: relative; */
 }
-.header-container{
-    background: rgb(138, 105, 105);
-    display: flex;
-    padding: 2px;
-    justify-content: center;
+.navbar{
+    background-color: rgb(138, 105, 105);
 }
-.home-logo a{
-    text-decoration: none;
-    color: white;
-    font-family: calibri, sans-serif;
-    font-size: 24pt;
+
+.searchBtn{
+    background-color: lightgray;
+    opacity: 100%;
+    padding: none;
 }
-.home-logo{
-    width: 30%;
-    display: inline-block;
-    margin-left: 10px;
+.searchBtn img{
+    width: 30px;
 }
+
+.dropdownbox, .search-bar{
+    margin-left:30%;
+}
+.search-bar{
+    width:30%;
+}
+
 .navigation{
     padding-top: 13px;
     width: 50%;
@@ -38,66 +41,6 @@ body{
 }
 .navigation-links a:hover{
     font-weight: bold;
-}
-.search-container{
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin: auto;
-    width: 25%;
-  }
-
-  .dropdown:hover{
-    display: inline-block;
-  }
-
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #f1f1f1}
-
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-  }
-
-  .dropbtn{
-    margin-left: 125px;
-  }
-
-#search-bar{
-    width:300px;
-    height:25px;
-    border-radius:25px;
-    border: none;
-    margin: 7px;
 }
 .carousel-box{
     display:flex;
@@ -135,7 +78,7 @@ body{
     font-weight: bold;
     background-color: transparent;
 }
-.btn:hover{
+btn:hover{
     opacity: 100%;
 }
 footer{
@@ -147,6 +90,8 @@ footer{
     width: 100%;
     bottom: 0;
 }
+
+/* Page-2 */
 
 .page-2{
     width: 50%;
@@ -177,6 +122,8 @@ footer{
 .buttons button {
     font-size: 9pt;
     width: 100px;
+    opacity: 75%;
+
 }
 
 .buttons a{
@@ -188,19 +135,10 @@ footer{
 
 .buttons a:hover{
     font-weight: bold;
+    opacity: 100%;
 }
 
-.video{
-    width: 75%;
-    margin: auto;
-}
-
-.video iframe{
-    width: 100%;
-    margin: auto;
-}
-
-
+/* Not Sure What these were for
 .selections{
     margin-top: 20px;
 }
@@ -209,38 +147,8 @@ footer{
     background-color: white;
     margin-top: 10px;
 }
+*/
 
-/* ALL.HTML */
-.allMoviesBody {
-    margin: auto;
-    width: 67%;
-}
-.allMovies{
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-.allMovies img{
-    height: 250px;
-    width: 170px;
-    margin: 5px;
-}
-
-.movie-Details{
-    width: 100%;
-}
 .hide{
     display: none;
-}
-
-
-/* movie.html */
-.movie.image.box{
-    display: inline-block;
-}
-
-.movie-detail-box{
-    display: inline block;
-    padding: 2px;
-    margin: 2 px;
 }

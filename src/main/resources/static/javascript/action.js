@@ -10,13 +10,27 @@ const titleHeader = document.querySelector(".title-header");
 const clickedImage = document.querySelector(".clicked-image");
 const clickedDetails = document.querySelector(".clicked-details");
 
-let movieDetails;
+let movieRating;
 
 const headers = {
     'Content-Type': 'application/json'
 }
 
 const baseURL = "http://localhost:8085/api/v1/capstone";
+
+async function getUserName(){
+
+    await fetch("http://localhost:8085/api/v1/users/" + `${userId}`,{
+         method: "GET",
+         headers: headers
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        signin.innerHTML = `${data.username}`
+    })
+    .catch(err => console.log(err.message));
+}
 
 async function getActionHomePage(){
     firstPage.classList.remove('hide');
@@ -59,7 +73,6 @@ async function show(id){
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         firstPage.classList.add('hide');
         secondPage.classList.remove('hide');
 
@@ -70,16 +83,65 @@ async function show(id){
         clickedDetails.innerHTML = `${data.summary}
                                     <br>
                                     <div class = "container buttons">
-                                        <button type = "button" class = "btn btn-primary" onclick = "addToWatchList(${data.movie_id})">+ Watched</button>
-                                        <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.movie_id})">Trailer</button>
-                                        <button type = "button" class = "btn btn-primary" onclick = "addToInterestedList(${data.movie_id})">+ Interested</button>
+                                        <button type = "button" class = "btn btn-primary" id = "watchBtn" onclick = "addToWatchedList(${data.movie_id})">+ Watched</button>
+                                        <button type = "button" class = "btn btn-primary" onclick = "playTrailer(${data.movie_id})" data-bs-toggle = "modal"
+                                                    data-bs-target = "#video-modal">Trailer</button>
+                                        <button type = "button" class = "btn btn-primary" id = "interestedBtn" onclick = "addToInterestedList(${data.movie_id})">+ Interested</button>
                                         <br>
-                                        <a href = "action.html">Return</a>
+                                        <a href = "home.html">Return to Home</a>
                                     </div>
                                     `;
         titleHeader.innerHTML = `${data.title}`;
+
     })
     .catch(err => console.error(err.message))
+}
+
+async function playTrailer(id){
+    await fetch(`${baseURL}/${id}`, {
+            method: "GET",
+            headers: headers
+        })
+        .then(res => res.json())
+        .then(data => {
+            const box = document.querySelector(".trailer");
+            console.log(data.trailer);
+            box.innerHTML = `
+                <iframe src = "${data.trailer}" width = "100%" height = "500%"></iframe>
+            `
+
+        })
+        .catch(err => console.log(err.message))
+}
+
+async function addToInterestedList(id){
+    const interested = document.querySelector("#interestedBtn");
+    interested.innerHTML = "Added!";
+    interested.disabled = true;
+
+    const response = await fetch(`${baseURL}/interested/${userId}/${id}`, {
+        method: "POST",
+        headers: headers
+    })
+        .catch(err => console.error(err.message))
+    if (response.status == 200) {
+        return "Successfully Added to interested-List"
+    }
+}
+
+async function addToWatchedList(id){
+    const watchBtn = document.querySelector("#watchBtn");
+    watchBtn.innerHTML = "Added!";
+    watchBtn.disabled = true;
+
+    const response = await fetch(`${baseURL}/watched/${userId}/${id}`, {
+            method: "POST",
+            headers: headers
+        })
+            .catch(err => console.error(err.message))
+        if (response.status == 200) {
+            return "Successfully Added to watched List"
+        }
 }
 
 function handleLogout(){
@@ -90,6 +152,6 @@ function handleLogout(){
 }
 
 getActionHomePage();
-
+getUserName();
 
 

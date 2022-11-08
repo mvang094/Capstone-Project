@@ -34,7 +34,7 @@ public class Watched_List {
     @Column(name = "movie_rating")
     private Integer rating;
 
-    @Column(name = "movie_review")
+    @Column(name = "movie_review", length = 500)
     private String review;
 
     public Watched_List (Watched_ListDto watchDto){

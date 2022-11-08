@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public List<String> addUser(UserDto userDto){
+    public List<String> addUser(UserDto userDto) {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepo.saveAndFlush(user); //This is where the user gets saved into the database(persisted)
@@ -30,22 +30,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<String> userLogin(UserDto userDto)
-    {
+    public List<String> userLogin(UserDto userDto) {
         List<String> response = new ArrayList<>();
         Optional<User> userOptional = userRepo.findByUsername(userDto.getUsername());
-        if(userOptional.isPresent())
-        {
-            if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())){
+        if (userOptional.isPresent()) {
+            if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())) {
                 response.add("http://localhost:8085/home.html");
                 response.add(String.valueOf(userOptional.get().getId()));
-            }
-            else
+            } else
                 response.add("Username or password incorrect");
-        }
-        else
+        } else
             response.add("Username or password incorrect");
 
         return response;
+    }
+
+    @Override
+    public UserDto getUser(Long userId) {
+        Optional<User> userOptional = userRepo.findById(userId);
+        UserDto userDto = new UserDto(userOptional.get());
+
+        return userDto;
     }
 }
