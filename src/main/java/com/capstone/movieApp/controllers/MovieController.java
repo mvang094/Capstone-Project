@@ -28,10 +28,16 @@ public class MovieController {
         return showMovies;
     }
 
-    @GetMapping("/{movieId}")
-    public Optional<MovieDto> getMoviesById(@PathVariable Long movieId)
+    @GetMapping("/{id}")
+    public Optional<MovieDto> getMoviesById(@PathVariable Long id)
     {
-        return movieService.getMoviesById(movieId);
+        return movieService.getMoviesById(id);
+    }
+
+    @GetMapping("/movie/{name}")
+    public Optional<MovieDto> getMoviesByName(@PathVariable String name)
+    {
+        return movieService.getMovieByName(name);
     }
 
     @GetMapping("/action")

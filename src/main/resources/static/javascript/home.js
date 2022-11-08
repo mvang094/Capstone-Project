@@ -85,6 +85,8 @@ async function show(id){
         firstPage.classList.add('hide');
         secondPage.classList.remove('hide');
 
+        console.log(data);
+
         clickedImage.innerHTML = '';
         clickedDetails.innerHTML = '';
         titleHeader.innerHTML = '';

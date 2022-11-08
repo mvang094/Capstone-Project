@@ -19,7 +19,7 @@ body{
     margin-right: 5%;
 }
 
-.watchedBox{
+.watchedBox, .interestedBox{
     width: 50%;
     margin: auto;
     font-family: Calibri;

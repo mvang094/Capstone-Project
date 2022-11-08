@@ -9,6 +9,7 @@ const secondPage = document.querySelector(".page-2");
 const titleHeader = document.querySelector(".title-header");
 const clickedImage = document.querySelector(".clicked-image");
 const clickedDetails = document.querySelector(".clicked-details");
+const signin = document.querySelector("#navbarDropdown");
 
 let movieDetails;
 
@@ -48,7 +49,7 @@ async function getRomance(){
                 <div class = "card">
                     <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movieId})">DETAILS</button>
                     </div>
                 </div>`
             adventureOne.innerHTML += movieCard1;
@@ -58,7 +59,7 @@ async function getRomance(){
                 <div class = "card">
                     <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movieId})">DETAILS</button>
                     </div>
                 </div>`
             adventureTwo.innerHTML += movieCard1;

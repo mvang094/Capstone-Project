@@ -1,5 +1,6 @@
 package com.capstone.movieApp.services;
 
+import com.capstone.movieApp.dtos.InterestedDto;
 import com.capstone.movieApp.dtos.MovieDto;
 import com.capstone.movieApp.dtos.UserDto;
 import com.capstone.movieApp.entities.Movies;
@@ -12,10 +13,9 @@ import com.capstone.movieApp.repositories.WatchedRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import javax.transaction.Transactional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieServiceImpl implements MovieService{ ;
@@ -32,13 +32,12 @@ public class MovieServiceImpl implements MovieService{ ;
     public Optional<MovieDto> getMovieByName(String movieName){
       Optional<Movies> moviesOptional = movieRepo.findByTitle(movieName);
       //This is the functional style
-        return moviesOptional.map(MovieDto::new);
-        /* This is what the functional style is expanded out
+//        return moviesOptional.map(MovieDto::new);
+        //This is what the functional style is expanded out
         if(moviesOptional.isPresent()){
           return Optional.of(new MovieDto(moviesOptional.get()));
       }
       return Optional.empty();
-         */
     };
 
     @Override
@@ -99,6 +98,36 @@ public class MovieServiceImpl implements MovieService{ ;
         List<Movies> genreList = movieRepo.findAllBygenre(genre);
         return genreList;
     }
+
+
+    @Override
+    public Set<MovieDto> getInterestedList(Long userId){
+        Optional<User> userOptional = userRepo.findById(userId);
+        if(userOptional.isPresent())
+        {
+            Set<Movies> interestedMovies = movieRepo.findAllByInterestedUsersEquals(userOptional.get());
+            return interestedMovies.stream().map(watched -> new MovieDto(watched)).collect(Collectors.toSet());
+        }
+
+        return Collections.emptySet();
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteFromInterestedList(Long userId, Long movieId) {
+        Optional<User> userOptional = userRepo.findById(userId);
+        Optional<Movies> moviesOptional = movieRepo.findById(movieId);
+
+        if(userOptional.isPresent() && moviesOptional.isPresent()){
+            User user = userOptional.get();
+            Movies movies = moviesOptional.get();
+
+            user.deleteInterested(movies);
+            movies.deleteInterestedUsers(user);
+        }
+    }
+
 
 
 }

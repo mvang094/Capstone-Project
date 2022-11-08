@@ -15,5 +15,5 @@ public interface CastingRepo extends JpaRepository<Casting_List, Long> {
     Optional<Casting_List> findById(Long cast_id);
 
     //For search function - brings up list of movies with cast member
-    Optional<Casting_List> findByCastName(String cast_name);
+    Optional<Casting_List> findByCastName(String name);
 }

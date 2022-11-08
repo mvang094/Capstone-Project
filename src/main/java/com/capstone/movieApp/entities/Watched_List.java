@@ -49,7 +49,7 @@ public class Watched_List {
     public Watched_List(User user, Movies movies){
         this.user = user;
         this.movies = movies;
-        this.watch_id = new Watched_ListKey(user.getId(), movies.getMovie_id());
+        this.watch_id = new Watched_ListKey(user.getId(), movies.getMovieId());
         this.watched = true;
     }
 

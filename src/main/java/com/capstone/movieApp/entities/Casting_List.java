@@ -18,7 +18,7 @@ public class Casting_List {
     private Long cast_id;
 
     @Column
-    private String castFirst, castName, castImage;
+    private String castName, castImage;
 
     @ManyToMany
     @JoinTable(
@@ -28,10 +28,15 @@ public class Casting_List {
     )
     Set<Movies> movieCast = new HashSet<>();
 
-    public Casting_List(Casting_ListDto castListDto){
-        if(castListDto.getCastName() != null)
+    public Casting_List(Casting_ListDto castListDto) {
+        if (castListDto.getCastName() != null)
             this.castName = castListDto.getCastName();
-        if(castListDto.getCastImage() != null)
+        if (castListDto.getCastImage() != null)
             this.castImage = castListDto.getCastImage();
+    }
+
+    public void addCastMovies(Movies movies) {
+        this.movieCast.add(movies);
+        movies.getCastlist().add(this);
     }
 }

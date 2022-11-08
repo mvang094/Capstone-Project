@@ -49,7 +49,7 @@ async function getAdventureHomePage(){
                 <div class = "card">
                     <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movieId})">DETAILS</button>
                     </div>
                 </div>`
             adventureOne.innerHTML += movieCard1;
@@ -59,7 +59,7 @@ async function getAdventureHomePage(){
                 <div class = "card">
                     <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movieId})">DETAILS</button>
                     </div>
                 </div>`
             adventureTwo.innerHTML += movieCard1;

@@ -9,12 +9,15 @@ const secondPage = document.querySelector(".page-2");
 const titleHeader = document.querySelector(".title-header");
 const clickedImage = document.querySelector(".clicked-image");
 const clickedDetails = document.querySelector(".clicked-details");
+const signin = document.querySelector("#navbarDropdown");
 
 let movieRating;
 
 const headers = {
     'Content-Type': 'application/json'
 }
+
+let name = "Tomb Raider";
 
 const baseURL = "http://localhost:8085/api/v1/capstone";
 
@@ -30,6 +33,19 @@ async function getUserName(){
         signin.innerHTML = `${data.username}`
     })
     .catch(err => console.log(err.message));
+}
+
+async function getActionMovieByName(name){
+
+    await fetch(`${baseURL}/movie/${name}`, {
+            method: "GET",
+            headers: headers
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => console.log(err.message));
 }
 
 async function getActionHomePage(){
@@ -48,7 +64,7 @@ async function getActionHomePage(){
                 <div class = "card">
                     <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movieId})">DETAILS</button>
                     </div>
                 </div>`
             adventureOne.innerHTML += movieCard1;
@@ -58,7 +74,7 @@ async function getActionHomePage(){
                 <div class = "card">
                     <img class = "card-top" src = "${data[i].image}" width = "200" height = "300">
                     <div class = "card-body text-center">
-                        <button class = "btn btn-primary" onclick = "show(${data[i].movie_id})">DETAILS</button>
+                        <button class = "btn btn-primary" onclick = "show(${data[i].movieId})">DETAILS</button>
                     </div>
                 </div>`
             adventureTwo.innerHTML += movieCard1;
@@ -75,6 +91,8 @@ async function show(id){
     .then(data => {
         firstPage.classList.add('hide');
         secondPage.classList.remove('hide');
+
+        console.log(data);
 
         clickedImage.innerHTML = '';
         clickedDetails.innerHTML = '';
@@ -153,5 +171,4 @@ function handleLogout(){
 
 getActionHomePage();
 getUserName();
-
 

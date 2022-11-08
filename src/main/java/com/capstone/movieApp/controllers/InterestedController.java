@@ -5,6 +5,9 @@ import com.capstone.movieApp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Set;
+
 @RestController
 @RequestMapping("api/v1/capstone/interested")
 public class InterestedController {
@@ -17,9 +20,14 @@ public class InterestedController {
         movieService.addToInterestedList(userId, movieId);
     }
 
-    @GetMapping
+    @GetMapping("/{userId}")
     public Set<MovieDto> getMovies(@PathVariable Long userId){
-        movieService.getInterestedList(userId);
+        return movieService.getInterestedList(userId);
+    }
+
+    @DeleteMapping("/{userId}/{movieId}")
+    public void deleteInterested(@PathVariable Long userId, @PathVariable Long movieId){
+        movieService.deleteFromInterestedList(userId, movieId);
     }
 
 }

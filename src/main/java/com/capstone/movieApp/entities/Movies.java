@@ -37,14 +37,21 @@ public class Movies {
     @JsonManagedReference
     Set<Watched_List> watched = new HashSet<>();
 
-    @ManyToMany(mappedBy = "interestedMovies", fetch = FetchType.LAZY) //name of the SET in Movies
-    Set<User> interestedUsers = new HashSet<>();
-
     @ManyToMany(mappedBy = "movieCast", fetch = FetchType.LAZY) //name of the SET in Movies
     Set<Casting_List> castlist = new HashSet<>();
 
+    @ManyToMany(mappedBy = "interestedMovies", fetch = FetchType.LAZY) //name of the SET in Movies
+    Set<User> interestedUsers = new HashSet<>();
+
     public void addInterestedUsers(User user){
         this.interestedUsers.add(user);
+    }
+
+    public void deleteInterestedUsers(User user){
+        this.interestedUsers.remove(user);
+    }
+    public void addCastList(Casting_List casting_list){
+        this.castlist.add(casting_list);
     }
 
     public Movies(MovieDto movieDto){
@@ -74,13 +81,9 @@ public class Movies {
         return movie_id;
     }
 
-    public Long getMovie_id() {
-        return movie_id;
-    }
-
-    public void setMovie_id(Long movie_id) {
-        this.movie_id = movie_id;
-    }
+//    public void setMovie_id(Long movie_id) {
+//        this.movie_id = movie_id;
+//    }
 
     public Long getYear() {
         return year;

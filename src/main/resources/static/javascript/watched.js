@@ -18,6 +18,20 @@ const headers = {
 
 const baseURL = "http://localhost:8085/api/v1/capstone/watched";
 
+async function getUserName(){
+
+    await fetch("http://localhost:8085/api/v1/users/" + `${userId}`,{
+         method: "GET",
+         headers: headers
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        signin.innerHTML = `${data.username}`
+    })
+    .catch(err => console.log(err.message));
+}
+
 async function getAllWatched(){
 
     await fetch(`${baseURL}/${userId}`, {
@@ -104,6 +118,7 @@ function handleLogout(){
 }
 
 getAllWatched();
+getUserName();
 
 updateNoteBtn.addEventListener("click", (e)=>{
     let movieId = e.target.getAttribute('data-movie-id');

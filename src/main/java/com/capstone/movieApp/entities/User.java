@@ -79,6 +79,10 @@ public class User {
         this.interestedMovies.add(movies);
         movies.getInterestedUsers().add(this);
     }
+    public void deleteInterested(Movies movies){
+        this.interestedMovies.remove(movies);
+        movies.getInterestedUsers().remove(this);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

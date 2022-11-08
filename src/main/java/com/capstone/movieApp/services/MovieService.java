@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface MovieService {
 
@@ -31,5 +32,10 @@ public interface MovieService {
     List<Movies> findGenre(String genre);
 
     void addToInterestedList(Long userId, Long movieId);
+
+    Set<MovieDto> getInterestedList(Long userId);
+
+    void deleteFromInterestedList(Long userId, Long movieId);
+
 
 }

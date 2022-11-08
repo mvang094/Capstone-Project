@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface MovieRepo extends JpaRepository<Movies, Long> {
@@ -26,8 +27,8 @@ public interface MovieRepo extends JpaRepository<Movies, Long> {
 
 //    List<Movies> findAll();
 
-//    //Finds the list of movies by user
-//    List<Movies> findAllByusersEquals(User user);
+    //Finds the list of movies by user
+    Set<Movies> findAllByInterestedUsersEquals(User user);
 
     //Finds the list of movies with the cast member in it
     List<Movies> findAllBycastlist(Casting_List cast);
