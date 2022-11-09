@@ -126,9 +126,13 @@ public class MovieServiceImpl implements MovieService{ ;
     @Override
     public Set<Watched_ListDto> getReviews(Long movieId){
         Optional<Movies> moviesOptional = movieRepo.findById(movieId);
-        Movies movies = moviesOptional.get();
+        if(moviesOptional.isPresent())
+        {
+            List<Watched_List> watchedList = watchedRepo.findAllBymovies(moviesOptional.get());
+            return watchedList.stream().map(watched -> new Watched_ListDto(watched)).collect(Collectors.toSet());
+        }
 
-        return movies.getWatched().stream().map(key -> new Watched_ListDto(key)).collect(Collectors.toSet());
+        return Collections.emptySet();
     }
 
 }

@@ -15,7 +15,6 @@ const clickedImage = document.querySelector(".clicked-image");
 const clickedDetails = document.querySelector(".clicked-details");
 const movieReviews = document.querySelector(".movieReviews");
 
-let movieTrailer;
 
 const headers = {
     'Content-Type': 'application/json'
@@ -168,6 +167,5 @@ function handleLogout(){
     }
 }
 getHomePage();
-getUserName();
 
 

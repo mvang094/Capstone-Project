@@ -124,7 +124,6 @@ function handleLogout(){
 }
 
 getAllWatched();
-getUserName();
 
 updateNoteBtn.addEventListener("click", (e)=>{
     let movieId = e.target.getAttribute('data-movie-id');

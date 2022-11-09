@@ -159,6 +159,5 @@ function handleLogout(){
 }
 
 getRomance();
-getUserName();
 
 

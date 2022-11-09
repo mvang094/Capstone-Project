@@ -155,7 +155,6 @@ function handleLogout(){
 }
 
 getHorror();
-getUserName();
 
 
 

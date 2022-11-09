@@ -157,6 +157,5 @@ function handleLogout(){
 }
 
 getComedyHomePage();
-getUserName();
 
 

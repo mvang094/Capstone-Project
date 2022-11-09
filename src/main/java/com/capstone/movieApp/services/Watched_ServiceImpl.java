@@ -38,8 +38,6 @@ public class Watched_ServiceImpl implements Watched_Service {
             Watched_List watched_list = new Watched_List(user, movies);
             watched_list.setMovies(movies);
             watched_list.setUser(user);
-            user.addWatchedList(watched_list);
-            movies.addWatchedList(watched_list);
 
             watchedRepo.saveAndFlush(watched_list);
         }

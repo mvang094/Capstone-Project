@@ -158,5 +158,4 @@ function handleLogout(){
 }
 
 getActionHomePage();
-getUserName();
 
