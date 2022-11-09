@@ -1,6 +1,7 @@
 package com.capstone.movieApp.entities;
 
 import com.capstone.movieApp.dtos.UserDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -28,14 +29,6 @@ public class User {
         this.admin = admin;
     }
 
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-//    @JoinTable( //The @joinTable is on the owning side
-//            name = "Watched_List", //intermediate table
-//            joinColumns = { @JoinColumn(name = "user_id")}, //foreign key
-//            inverseJoinColumns = {@JoinColumn(name = "movie_id")} //foreign key
-//    )
-//    Set<Movies> movies = new HashSet<>(); //the set to join the two tables (i.e. movies with user, and user with movies)
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinTable( //The @joinTable is on the owning side
             name = "Interested_List", //intermediate table
@@ -49,6 +42,9 @@ public class User {
     @JsonManagedReference
     Set<Watched_List> watched = new HashSet<>();
 
+    public void addWatchedList(Watched_List list){
+        this.watched.add(list);
+    }
     public User() {} //default constructor
     public User(UserDto userDto){
         if (userDto.getUsername() != null)

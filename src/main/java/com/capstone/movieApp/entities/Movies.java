@@ -3,6 +3,7 @@ package com.capstone.movieApp.entities;
 import javax.persistence.*;
 
 import com.capstone.movieApp.dtos.MovieDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -30,9 +31,6 @@ public class Movies {
     private String summary;
 
 
-//    @ManyToMany(mappedBy = "movies", fetch = FetchType.LAZY) //name of the SET in Movies
-//    Set<User> users = new HashSet<>();
-
     @OneToMany(mappedBy = "movies", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     Set<Watched_List> watched = new HashSet<>();
@@ -54,6 +52,9 @@ public class Movies {
         this.castlist.add(casting_list);
     }
 
+    public void addWatchedList(Watched_List list){
+        this.watched.add(list);
+    }
     public Movies(MovieDto movieDto){
         if(movieDto.getYear() != null)
             this.year = movieDto.getYear();

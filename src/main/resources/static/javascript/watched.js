@@ -18,20 +18,6 @@ const headers = {
 
 const baseURL = "http://localhost:8085/api/v1/capstone/watched";
 
-async function getUserName(){
-
-    await fetch("http://localhost:8085/api/v1/users/" + `${userId}`,{
-         method: "GET",
-         headers: headers
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        signin.innerHTML = `${data.username}`
-    })
-    .catch(err => console.log(err.message));
-}
-
 async function getAllWatched(){
 
     await fetch(`${baseURL}/${userId}`, {
@@ -39,8 +25,9 @@ async function getAllWatched(){
         headers: headers
     })
     .then(response => response.json())
-    .then(data => data.forEach(elem =>{
-        console.log(data);
+    .then(data =>
+            data.forEach(elem =>{
+            console.log(data);
                               let movieCard = `
                                   <div class="col">
                                        <div class="card text-center">
@@ -50,17 +37,36 @@ async function getAllWatched(){
                                                  <div class="card-body text-center">
 
                                                       <button type = "button" class = "btn btn-primary" onclick = "getMovieById(${elem.movie_id})"
-                                                                      data-bs-toggle = "modal" data-bs-target = "#movie-edit-modal">Add Review</button>
+                                                                      data-bs-toggle = "modal" data-bs-target = "#movie-edit-modal"><b>+<b> Review</button>
                                                       <button type = "button" class = "btn btn-primary" onclick = "deleteMovie(${elem.movie_id})">Delete</button>
                                                  </div>
                                             </div>
                                        </div>
                                  </div>
                               `
+//                              movieRating(elem.movie_id);
                               watchedBox.innerHTML += movieCard;
     }))
     .catch(error => console.log(error.message));
 }
+
+async function movieRating(id){
+console.log(id)
+    await fetch(`${baseURL}/rating/${userId}/${id}`, {
+            method: "GET",
+            headers: headers
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            rating = `${data.rating}`;
+            console.log(rating);
+            const stars = document.querySelector("#stars");
+            stars.innerHTML = `${rating}`;
+        })
+        .catch(err => console.log(err.message))
+}
+
 
 async function getMovieById(id){
 

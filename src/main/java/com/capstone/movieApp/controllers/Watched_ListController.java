@@ -32,10 +32,10 @@ public class Watched_ListController {
         return watchedService.getWatchedMovies(userId, movieId);
     }
 
-//    @GetMapping("/rating/{userId}/{movieId}")
-//    public Watched_ListDto getMovieRating(@PathVariable Long userId, @PathVariable Long movieId){
-//        return watchedService.getRating(userId, movieId);
-//    }
+    @GetMapping("/rating/{userId}/{movieId}")
+    public Watched_ListDto getMovieRating(@PathVariable Long userId, @PathVariable Long movieId){
+        return watchedService.getRating(userId, movieId);
+    }
 
 //    @GetMapping("/{movieId}")
 //    public Optional<MovieDto> getMovie(@PathVariable Long movieId){

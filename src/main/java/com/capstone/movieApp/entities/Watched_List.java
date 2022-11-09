@@ -2,6 +2,7 @@ package com.capstone.movieApp.entities;
 
 import com.capstone.movieApp.dtos.Watched_ListDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 

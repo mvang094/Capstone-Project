@@ -22,5 +22,6 @@ public interface WatchedRepo extends JpaRepository<Watched_List, Watched_ListKey
     //This method will be used for rating the movie
 //    List<Watched_List> findByIdmovies(Movies movies);
 
+    List<Watched_List> findAllBymovies(Movies movies);
     Optional<Watched_List> findBymovies(Movies movies);
 }

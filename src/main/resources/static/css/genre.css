@@ -1,6 +1,5 @@
 body{
 background: black;
-position: relative;
 }
 
 .navigation{
@@ -27,23 +26,20 @@ font-size: 16pt;
 font-weight: bold;
 }
 
-.navbar{
-    background-color: rgb(138, 105, 105);
+.header-container{
+    background: rgb(138, 105, 105);
+    display: flex;
+    padding: 2px;
+    justify-content: center;
 }
-
-.searchBtn{
-    background-color: lightgray;
-    opacity: 100%;
+#logo{
+    color: white;
+    font-family: Calibri;
+    font-size: 24pt;
+    margin: auto;
 }
-.searchBtn img{
-    width: 30px;
-}
-
-.dropdownbox, .search-bar{
-    margin-left:30%;
-}
-.search-bar{
-    width:30%;
+.navbar-collapse{
+    margin-right: 5%;
 }
 
 .card{
@@ -134,4 +130,18 @@ margin-top: 10px;
 
 .hide{
 display: none;
+}
+
+#navbarSupportedContent{
+    margin-left: 175%;
+}
+
+#navbarDropdown{
+    font-weight: bold;
+}
+
+
+.movieReviews{
+    color: white
+    border-top:bottom-border: 2px rgb(138, 105, 105) solid;
 }

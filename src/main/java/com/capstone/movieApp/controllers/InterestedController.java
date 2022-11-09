@@ -2,6 +2,7 @@ package com.capstone.movieApp.controllers;
 
 import com.capstone.movieApp.dtos.MovieDto;
 import com.capstone.movieApp.services.MovieService;
+import com.capstone.movieApp.services.Watched_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +15,17 @@ public class InterestedController {
 
     @Autowired
     MovieService movieService;
+    @Autowired
+    Watched_Service watchedService;
 
     @PostMapping("/{userId}/{movieId}")
     public void addInterested(@PathVariable Long userId, @PathVariable Long movieId){
         movieService.addToInterestedList(userId, movieId);
+    }
+
+    @PostMapping("/watched/{userId}/{movieId}")
+    public void addWatched(@PathVariable Long userId, @PathVariable Long movieId){
+        watchedService.addToWatchedFromInterested(userId, movieId);
     }
 
     @GetMapping("/{userId}")

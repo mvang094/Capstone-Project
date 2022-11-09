@@ -1,5 +1,6 @@
 package com.capstone.movieApp.controllers;
 
+import com.capstone.movieApp.dtos.Casting_ListDto;
 import com.capstone.movieApp.dtos.MovieDto;
 import com.capstone.movieApp.dtos.Watched_ListDto;
 import com.capstone.movieApp.entities.Movies;
@@ -64,13 +65,9 @@ public class MovieController {
     public List<Movies> getRomanceMovies(){
         return movieService.findGenre("Romance");
     }
-//    @PostMapping("/watched/{userId}/{movieId}")
-//    public void addWatched (@PathVariable Long movieId, @PathVariable Long userId){
-//        watchedService.addMovieToWatchedList(movieId, userId);
-//    }
 
-//    @PostMapping("/interested/{userId}/{movieId}")
-//    public void addInterested (@PathVariable Long movieId, @PathVariable Long userId){
-//        userService.addMovieToInterestedList(movieId, userId);
-//    }
+    @GetMapping("/reviews/{movieId}")
+    public Set<Watched_ListDto> getMovieReviews(@PathVariable Long movieId){
+        return movieService.getReviews(movieId);
+    }
 }

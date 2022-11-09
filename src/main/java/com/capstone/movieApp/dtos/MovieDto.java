@@ -6,6 +6,7 @@ import java.util.*;
 import com.capstone.movieApp.dtos.Casting_ListDto;
 import com.capstone.movieApp.dtos.MovieDto;
 import com.capstone.movieApp.dtos.UserDto;
+import com.capstone.movieApp.entities.Casting_List;
 import com.capstone.movieApp.entities.Movies;
 import lombok.*;
 

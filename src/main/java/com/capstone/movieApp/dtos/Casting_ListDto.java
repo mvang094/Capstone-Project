@@ -2,6 +2,7 @@ package com.capstone.movieApp.dtos;
 
 import com.capstone.movieApp.dtos.MovieDto;
 import com.capstone.movieApp.entities.Casting_List;
+import com.capstone.movieApp.entities.Movies;
 
 import javax.persistence.*;
 import java.util.HashSet;

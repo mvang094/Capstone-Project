@@ -10,34 +10,31 @@
 </head>
 <body>
 <div class = "home-container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="home.html">A Movie App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex search-bar">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn searchBtn" type="submit"><img src="https://cdn-icons-png.flaticon.com/512/6671/6671414.png"></button>
-                </form>
-
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 dropdownbox">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            User Name
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="watchedList.html">Watched List</a></li>
-                            <li><a class="dropdown-item" href="interestedList.html">Interested List</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="login.html" onclick="handleLogout()">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <div class = "container-fluid header-container ">
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html" id = "logo">A Movie App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 dropdownbox">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="watchedList.html">Watched List</a></li>
+                                <li><a class="dropdown-item" href="interestedList.html">Interested List</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html" onclick="handleLogout()">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <div class = "navigation">
         <ul class = "navigation-menu">
             <li class = "navigation-links"><a href = "action.html">Action</a></li>
@@ -58,7 +55,10 @@
             <div class = "container clicked-image"></div>
             <div class = "container clicked-details"></div>
         </div>
-        <div class = "container cast">CAST</div>
+        <div class = "container movieReviews">
+            <h3><i>See what others are saying!</i></h3>
+            <br>
+        </div>
     </div>
 
     <div class = "home-container">

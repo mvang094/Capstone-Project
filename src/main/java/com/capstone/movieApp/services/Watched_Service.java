@@ -32,6 +32,8 @@ public interface Watched_Service {
     //If you want to look at the details again
 //    Optional<Watched_ListDto> getWatchEntry(Long noteId);
 
-    Watched_ListDto getRating(Long userId, Long movieID);
+    Watched_ListDto getRating(Long userId, Long movieId);
+    void addToWatchedFromInterested(Long userId, Long movieId);
+
 
 }

@@ -8,7 +8,7 @@ body{
     padding: 2px;
     justify-content: center;
 }
-.navbar-brand{
+#logo{
     color: white;
     font-family: Calibri;
     font-size: 24pt;
@@ -41,8 +41,13 @@ body{
 }
 
 .btn{
-    background: grey;
-    opacity: 50%;
+    width: 100px;
+    border: 2px solid grey;
+    border-radius: 25px;
+    opacity: 60%;
+    font-family: calibri;
+    font-weight: bold;
+    background-color: transparent;
 }
 
 .btn:hover{
@@ -63,3 +68,10 @@ body{
     color: white;
 }
 
+#navbarSupportedContent{
+    margin-left: 175%;
+}
+
+#navbarDropdown{
+    font-weight: bold;
+}

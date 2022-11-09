@@ -12,20 +12,6 @@ const headers = {
 
 const baseURL = "http://localhost:8085/api/v1/capstone/interested";
 
-async function getUserName(){
-
-    await fetch("http://localhost:8085/api/v1/users/" + `${userId}`,{
-         method: "GET",
-         headers: headers
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        signin.innerHTML = `${data.username}`
-    })
-    .catch(err => console.log(err.message));
-}
-
 async function getAllInterested(){
 
     await fetch(`${baseURL}/${userId}`, {
@@ -59,6 +45,21 @@ async function deleteMovie(id){
             method: "DELETE",
             headers: headers
     })
+    .catch(err => console.error(err))
+
+    return location.reload();
+
+}
+
+async function addToWatchedList(id){
+
+    console.log(userId)
+    console.log(id);
+    await fetch(`${baseURL}/watched/${userId}/${id}`, {
+            method: "POST",
+            headers: headers
+    })
+    .then (deleteMovie(id))
     .catch(err => console.error(err))
 
     return location.reload();

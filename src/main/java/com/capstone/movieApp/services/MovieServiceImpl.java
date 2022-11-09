@@ -1,12 +1,7 @@
 package com.capstone.movieApp.services;
 
-import com.capstone.movieApp.dtos.InterestedDto;
-import com.capstone.movieApp.dtos.MovieDto;
-import com.capstone.movieApp.dtos.UserDto;
-import com.capstone.movieApp.entities.Movies;
-import com.capstone.movieApp.entities.User;
-import com.capstone.movieApp.entities.Watched_List;
-import com.capstone.movieApp.entities.Watched_ListKey;
+import com.capstone.movieApp.dtos.*;
+import com.capstone.movieApp.entities.*;
 import com.capstone.movieApp.repositories.MovieRepo;
 import com.capstone.movieApp.repositories.UserRepo;
 import com.capstone.movieApp.repositories.WatchedRepo;
@@ -128,6 +123,12 @@ public class MovieServiceImpl implements MovieService{ ;
         }
     }
 
+    @Override
+    public Set<Watched_ListDto> getReviews(Long movieId){
+        Optional<Movies> moviesOptional = movieRepo.findById(movieId);
+        Movies movies = moviesOptional.get();
 
+        return movies.getWatched().stream().map(key -> new Watched_ListDto(key)).collect(Collectors.toSet());
+    }
 
 }

@@ -1,7 +1,9 @@
 package com.capstone.movieApp.services;
 
+import com.capstone.movieApp.dtos.Casting_ListDto;
 import com.capstone.movieApp.dtos.MovieDto;
 import com.capstone.movieApp.dtos.UserDto;
+import com.capstone.movieApp.dtos.Watched_ListDto;
 import com.capstone.movieApp.entities.Movies;
 import com.capstone.movieApp.entities.User;
 import com.capstone.movieApp.entities.Watched_ListKey;
@@ -20,6 +22,8 @@ public interface MovieService {
     //This is when the search function is used
     Optional<MovieDto> getMovieByName(String movieName);
 
+    Set<Watched_ListDto> getReviews(Long movieId);
+
 //    List<> addMovies();
     //This is to return set of movies to the home screen; No duplications
     HashSet<MovieDto> getHomeAll();
@@ -34,8 +38,5 @@ public interface MovieService {
     void addToInterestedList(Long userId, Long movieId);
 
     Set<MovieDto> getInterestedList(Long userId);
-
     void deleteFromInterestedList(Long userId, Long movieId);
-
-
 }

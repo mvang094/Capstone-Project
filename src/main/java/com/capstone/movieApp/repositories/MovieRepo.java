@@ -3,6 +3,7 @@ package com.capstone.movieApp.repositories;
 import com.capstone.movieApp.entities.Casting_List;
 import com.capstone.movieApp.entities.Movies;
 import com.capstone.movieApp.entities.User;
+import com.capstone.movieApp.entities.Watched_List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

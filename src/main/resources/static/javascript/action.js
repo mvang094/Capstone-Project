@@ -9,44 +9,13 @@ const secondPage = document.querySelector(".page-2");
 const titleHeader = document.querySelector(".title-header");
 const clickedImage = document.querySelector(".clicked-image");
 const clickedDetails = document.querySelector(".clicked-details");
-const signin = document.querySelector("#navbarDropdown");
-
-let movieRating;
+const movieReviews = document.querySelector(".movieReviews");
 
 const headers = {
     'Content-Type': 'application/json'
 }
 
-let name = "Tomb Raider";
-
 const baseURL = "http://localhost:8085/api/v1/capstone";
-
-async function getUserName(){
-
-    await fetch("http://localhost:8085/api/v1/users/" + `${userId}`,{
-         method: "GET",
-         headers: headers
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        signin.innerHTML = `${data.username}`
-    })
-    .catch(err => console.log(err.message));
-}
-
-async function getActionMovieByName(name){
-
-    await fetch(`${baseURL}/movie/${name}`, {
-            method: "GET",
-            headers: headers
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => console.log(err.message));
-}
 
 async function getActionHomePage(){
     firstPage.classList.remove('hide');
@@ -110,9 +79,28 @@ async function show(id){
                                     </div>
                                     `;
         titleHeader.innerHTML = `${data.title}`;
-
+getReviews(id);
     })
     .catch(err => console.error(err.message))
+}
+
+async function getReviews(id){
+    await fetch(`${baseURL}/reviews/${id}`,{
+        method: "GET",
+        headers: headers
+    })
+    .then(res => res.json())
+    .then(data =>
+            data.forEach(elem =>{
+                let reviewCard = `
+                    <div class = "reviewBox">
+                        <h4>Rating: ${elem.rating} / 5</h4>
+                        <p>"${elem.review}"</p>
+                        <hr>
+                    </div>
+                `
+                movieReviews.innerHTML+=reviewCard;
+        }))
 }
 
 async function playTrailer(id){

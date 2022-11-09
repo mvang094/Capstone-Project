@@ -38,6 +38,8 @@ public class Watched_ServiceImpl implements Watched_Service {
             Watched_List watched_list = new Watched_List(user, movies);
             watched_list.setMovies(movies);
             watched_list.setUser(user);
+            user.addWatchedList(watched_list);
+            movies.addWatchedList(watched_list);
 
             watchedRepo.saveAndFlush(watched_list);
         }
@@ -96,5 +98,21 @@ public class Watched_ServiceImpl implements Watched_Service {
         return watchedDto;
     }
 
+    @Override
+    public void addToWatchedFromInterested(Long userId, Long movieId) {
+//        Watched_ListKey key = new Watched_ListKey(userId, movieId);
+        Optional<User> userOptional = userRepo.findById(userId);
+        Optional<Movies> moviesOptional = movieRepo.findById(movieId);
+//        addMovieToWatchedList(userId, movieId);
+        if (userOptional.isPresent() && moviesOptional.isPresent()) {
+            User user = userOptional.get();
+            Movies movies = moviesOptional.get();
+            Watched_List watched_list = new Watched_List(user, movies);
+            watched_list.setMovies(movies);
+            watched_list.setUser(user);
+
+            watchedRepo.saveAndFlush(watched_list);
+        }
+    }
 
 }
