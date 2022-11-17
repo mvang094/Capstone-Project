@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/v1/capstone")
+//@RequestMapping("/api/v1/capstone")
+@RequestMapping("api/vi/capstone")
 public class MovieController {
 
     @Autowired

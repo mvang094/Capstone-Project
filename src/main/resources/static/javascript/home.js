@@ -1,6 +1,9 @@
 //Cookie
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
+const username = cookieArr[2];
+let accountId = document.querySelector("#navbarDropdown");
+accountId.innerHTML = `${username}`;
 
 //DOM Elements
 const topRow = document.querySelector(".top-row");
@@ -20,7 +23,8 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseURL = "http://localhost:8085/api/v1/capstone";
+//const baseURL = "http://localhost:8085/api/v1/capstone";
+const baseURL = "api/v1/capstone";
 
 async function getHomePage(){
     firstPage.classList.remove('hide');

@@ -1,8 +1,9 @@
 //Cookie
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
-
-console.log("Connected to interested.js");
+const username = cookieArr[2];
+let accountId = document.querySelector("#navbarDropdown");
+accountId.innerHTML = `${username}`;
 
 const interestedBox = document.querySelector(".interestedBox");
 
@@ -10,7 +11,9 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseURL = "http://localhost:8085/api/v1/capstone/interested";
+//const baseURL = "http://localhost:8085/api/v1/capstone/interested";
+const baseURL = "api/v1/capstone/interested";
+
 
 async function getAllInterested(){
 
@@ -20,7 +23,6 @@ async function getAllInterested(){
     })
     .then(response => response.json())
     .then(data => data.forEach(elem =>{
-        console.log(data);
                               let movieCard = `
                                   <div class="col">
                                        <div class="card text-center">

@@ -25,7 +25,8 @@ public class UserServiceImpl implements UserService {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepo.saveAndFlush(user); //This is where the user gets saved into the database(persisted)
-        response.add("http://localhost:8085/login.html");
+//        response.add("http://localhost:8085/login.html");
+        response.add("login.html");
         return response;
     }
 
@@ -35,8 +36,10 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepo.findByUsername(userDto.getUsername());
         if (userOptional.isPresent()) {
             if (passwordEncoder.matches(userDto.getPassword(), userOptional.get().getPassword())) {
-                response.add("http://localhost:8085/home.html");
+//                response.add("http://localhost:8085/home.html");
+                response.add("home.html");
                 response.add(String.valueOf(userOptional.get().getId()));
+                response.add(String.valueOf(userOptional.get().getUsername()));
             } else
                 response.add("Username or password incorrect");
         } else

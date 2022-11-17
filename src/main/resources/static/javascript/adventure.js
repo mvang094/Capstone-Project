@@ -1,6 +1,9 @@
 //Cookie
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
+const username = cookieArr[2];
+let accountId = document.querySelector("#navbarDropdown");
+accountId.innerHTML = `${username}`;
 
 const firstPage = document.querySelector(".page-1");
 const adventureOne = document.querySelector(".adventure-one");

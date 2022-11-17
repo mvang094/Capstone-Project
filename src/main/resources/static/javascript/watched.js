@@ -2,6 +2,9 @@
 const cookieArr = document.cookie.split("=")
 console.log(cookieArr);
 const userId = cookieArr[1];
+const username = cookieArr[2];
+let accountId = document.querySelector("#navbarDropdown");
+accountId.innerHTML = `${username}`;
 
 const watchedBox = document.querySelector(".watchedBox");
 const review = document.querySelector("#movie-body");
@@ -10,13 +13,15 @@ const title = document.querySelector("#movie-edit-modal-title");
 const updateNoteBtn = document.querySelector("#update-movie-button");
 const radioButtons = document.querySelectorAll('input[name="inlineRadioOptions"]');
 
-let rating;
+
 
 const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseURL = "http://localhost:8085/api/v1/capstone/watched";
+//const baseURL = "http://localhost:8085/api/v1/capstone/watched";
+const baseURL = "api/v1/capstone/watched";
+
 
 async function getAllWatched(){
 
@@ -27,7 +32,6 @@ async function getAllWatched(){
     .then(response => response.json())
     .then(data =>
             data.forEach(elem =>{
-            console.log(data);
                               let movieCard = `
                                   <div class="col">
                                        <div class="card text-center">
@@ -35,7 +39,6 @@ async function getAllWatched(){
                                             <div class="card-body">
                                                  <h4 class="card-title">${elem.title}</h4>
                                                  <div class="card-body text-center">
-
                                                       <button type = "button" class = "btn btn-primary" onclick = "getMovieById(${elem.movie_id})"
                                                                       data-bs-toggle = "modal" data-bs-target = "#movie-edit-modal"><b>+<b> Review</button>
                                                       <button type = "button" class = "btn btn-primary" onclick = "deleteMovie(${elem.movie_id})">Delete</button>
@@ -44,7 +47,6 @@ async function getAllWatched(){
                                        </div>
                                  </div>
                               `
-//                              movieRating(elem.movie_id);
                               watchedBox.innerHTML += movieCard;
     }))
     .catch(error => console.log(error.message));
@@ -66,7 +68,6 @@ console.log(id)
         })
         .catch(err => console.log(err.message))
 }
-
 
 async function getMovieById(id){
 

@@ -37,11 +37,6 @@ public class Watched_ListController {
         return watchedService.getRating(userId, movieId);
     }
 
-//    @GetMapping("/{movieId}")
-//    public Optional<MovieDto> getMovie(@PathVariable Long movieId){
-//        return movieService.getMoviesById(movieId);
-//    }
-
     @PostMapping("/{userId}/{movieId}")
     public void addWatched(@PathVariable Long movieId, @PathVariable Long userId){
         watchedService.addMovieToWatchedList(movieId, userId);

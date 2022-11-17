@@ -41,6 +41,9 @@ public class Movies {
     @ManyToMany(mappedBy = "interestedMovies", fetch = FetchType.LAZY) //name of the SET in Movies
     Set<User> interestedUsers = new HashSet<>();
 
+    public void addWatchedList(Watched_List list){
+        this.watched.add(list);
+    }
     public void addInterestedUsers(User user){
         this.interestedUsers.add(user);
     }
@@ -52,9 +55,6 @@ public class Movies {
         this.castlist.add(casting_list);
     }
 
-    public void addWatchedList(Watched_List list){
-        this.watched.add(list);
-    }
     public Movies(MovieDto movieDto){
         if(movieDto.getYear() != null)
             this.year = movieDto.getYear();

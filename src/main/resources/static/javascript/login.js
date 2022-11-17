@@ -7,7 +7,9 @@ const headers = {
     'Content-Type':'application/json'
 }
 
-const baseUrl = 'http://localhost:8085/api/v1/users'
+//const baseUrl = 'http://localhost:8085/api/v1/users'
+const baseUrl = 'api/v1/users'
+
 
 const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -25,9 +27,10 @@ const handleSubmit = async (e) =>{
         .catch(err => console.error(err.message))
 
     const responseArr = await response.json()
+    console.log(responseArr);
 
     if (response.status === 200){
-        document.cookie = `userId=${responseArr[1]}`
+        document.cookie = `userId=${responseArr[1]}=${responseArr[2]}`
         window.location.replace(responseArr[0])
     }
 }

@@ -35,5 +35,4 @@ public interface Watched_Service {
     Watched_ListDto getRating(Long userId, Long movieId);
     void addToWatchedFromInterested(Long userId, Long movieId);
 
-
 }

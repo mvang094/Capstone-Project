@@ -1,6 +1,9 @@
 //Cookie
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
+const username = cookieArr[2];
+let accountId = document.querySelector("#navbarDropdown");
+accountId.innerHTML = `${username}`;
 
 const firstPage = document.querySelector(".page-1");
 const adventureOne = document.querySelector(".adventure-one");
@@ -17,7 +20,8 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseURL = "http://localhost:8085/api/v1/capstone";
+//const baseURL = "http://localhost:8085/api/v1/capstone";
+const baseURL = "api/v1/capstone";
 
 async function getRomance(){
     firstPage.classList.remove('hide');

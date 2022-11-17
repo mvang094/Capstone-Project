@@ -9,8 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Config {
 
     @Bean
-    //Custom bean that keep tracks of new bean called passwordEncoder
-    //Hashes the password
     public PasswordEncoder passwordEncoder()
     {
         return new BCryptPasswordEncoder();
